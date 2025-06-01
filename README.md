@@ -16,7 +16,8 @@
 - 📬 Captura de leads (nome + e-mail): obrigatória antes de exibir os resultados, garantindo geração de leads para uso comercial.
 - 🚀 Banner estratégico da InfinitePay: após os resultados, é exibido um CTA discreto incentivando o cadastro na InfinitePay.
 - 🔐 Backend seguro com Supabase: todas as requisições sensíveis são feitas pelo servidor (nunca pelo client), e os dados são armazenados em um banco seguro.
-- 📈 Dashboard com a análise de ROAS e histórico de análises usando o email do lead 
+- 📈 Dashboard com a análise de ROAS e histórico de análises usando o email do lead.
+- Geração de um HTML com o resumo do calculo do ROAS e os insights com IA. 
 
 ---
 

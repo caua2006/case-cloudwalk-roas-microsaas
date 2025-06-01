@@ -16,6 +16,7 @@
 - 📬 Captura de leads (nome + e-mail): obrigatória antes de exibir os resultados, garantindo geração de leads para uso comercial.
 - 🚀 Banner estratégico da InfinitePay: após os resultados, é exibido um CTA discreto incentivando o cadastro na InfinitePay.
 - 🔐 Backend seguro com Supabase: todas as requisições sensíveis são feitas pelo servidor (nunca pelo client), e os dados são armazenados em um banco seguro.
+- 📈 Dashboard com a análise de ROAS e histórico de análises usando o email do lead 
 
 ---
 
@@ -36,7 +37,7 @@ Antes de começar, você precisa ter instalado:
 
 ```bash
 git clone https://github.com/caua2006/case-cloudwalk-roas-microsaas.git
-cd <nome-do-projeto>
+cd case-cloudwalk-roas-microsaas
 ```
 
 2. Instale as dependências:
@@ -56,7 +57,7 @@ SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
 OPENAI_API_KEY=your_openai_key
 ```
 
-> ❗ Importante: substitua `<projeto>` e as chaves pelas informações reais do seu projeto Supabase e OpenAI.
+> ❗ Importante: substitua `<project>` e as chaves pelas informações reais do seu projeto Supabase e OpenAI.
 
 4. Rode o servidor de desenvolvimento:
 
@@ -86,8 +87,8 @@ Before you start, make sure you have:
 1. Clone the repository:
 
 ```bash
-git clone <your-repo-url>
-cd <your-project>
+git clone https://github.com/caua2006/case-cloudwalk-roas-microsaas.git
+cd case-cloudwalk-roas-microsaas
 ```
 
 2. Install dependencies:
@@ -138,15 +139,34 @@ flowchart TD
 ## 🧠 Prompt da IA (usado na OpenAI)
 
 ```text
-Você é um especialista em marketing digital. Avalie a campanha:
+Você é um especialista em marketing digital e análise de ROI com mais de 10 anos de experiência. Analise esta campanha de marketing:
 
-Investimento: R$ {valor}
-Receita: R$ {valor}
-ROAS: {valor}
+DADOS DA CAMPANHA:
+- Investimento: R$ ${investimento.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+- Receita Gerada: R$ ${receita.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+- ROAS: ${roas.toFixed(2)}x
+${plataformaCampanha ? `- Plataforma: ${plataformaCampanha}` : ""}
+${dataCampanha ? `- Data da Campanha: ${new Date(dataCampanha).toLocaleDateString("pt-BR")}` : ""}
 
-1. Classifique como “ótimo”, “bom” ou “ruim”.
-2. Justifique brevemente.
-3. Dê 2 ou 3 recomendações práticas.
+FORNEÇA UMA ANÁLISE COMPLETA E DETALHADA COM:
+
+1. **CLASSIFICAÇÃO DO DESEMPENHO** (Excelente/Bom/Regular/Ruim) com emoji
+2. **ANÁLISE DETALHADA** do resultado obtido (mínimo 3 parágrafos)
+3. **BENCHMARKS DO MERCADO** para comparação específica da plataforma
+4. **5 RECOMENDAÇÕES ESPECÍFICAS** para otimização (numeradas)
+5. **PRÓXIMOS PASSOS** estratégicos (3 ações concretas)
+6. **ALERTAS E OPORTUNIDADES** baseados no ROAS atual
+
+IMPORTANTE:
+- Use linguagem profissional mas acessível
+- Seja específico e acionável nas recomendações
+- Inclua números e percentuais quando relevante
+- Mencione estratégias específicas para a plataforma informada
+- Responda em português brasileiro
+- Use formatação clara com **negrito** para destacar pontos importantes
+- Seja detalhado e forneça valor real ao usuário
+
+Análise:
 ```
 
 > Este prompt é enviado à API da OpenAI para gerar os insights personalizados com base nos dados da campanha.
@@ -160,22 +180,36 @@ ROAS: {valor}
 | Campo        | Tipo     | Descrição               |
 |--------------|----------|--------------------------|
 | id           | uuid     | Identificador único     |
-| nome / name  | text     | Nome do usuário         |
+| nome | text     | Nome do usuário         |
 | email        | text     | E-mail do lead          |
-| nomeNegocio / businessName | text | Nome do negócio (opcional) |
-| criado_em / created_at | timestamp | Data de criação       |
+| nome_negocio | text | Nome do negócio (opcional) |
+| created_at | timestamp | Data de criação       |
+| usuario_id | uuid | Id do Usuario       |
 
-### 📌 Tabela: `analises` / `analyses`
+### 📌 Tabela: `analises_roas` 
 
 | Campo         | Tipo     | Descrição                          |
 |---------------|----------|-------------------------------------|
 | id            | uuid     | ID da análise                      |
 | lead_id       | uuid     | Chave estrangeira para o lead      |
-| investimento / investment | decimal | Valor investido             |
-| receita / revenue | decimal | Receita obtida               |
-| roas          | decimal  | ROAS calculado                    |
-| insights      | text     | Texto gerado pela IA              |
-| criado_em / created_at | timestamp | Data da análise             |
+| valor_investido | numeric | Valor investido             |
+| receita_gerada | numeric | Receita obtida               |
+| roas          | numeric  | ROAS calculado                    |
+| plataforma_campanha | varchar  | Qual plataforma usada       |
+| data_campanha | date  | Quando foi a campanha       |
+| insights_ai      | text     | Texto gerado pela IA              |
+| created_at | timestamp | Data da análise             |
+| mes_referencia | varchar  | Mês de referencia      |
+
+### 📌 Tabela: `usuario`
+
+| Campo        | Tipo     | Descrição               |
+|--------------|----------|--------------------------|
+| id           | uuid     | Identificador único     |
+| nome     | Nome do usuário         |
+| email        | text     | E-mail do lead          |
+| senha_hash | varchar | Senha em hash |
+| created_at | timestamp | Data de criação       |
 
 ---
 
@@ -199,8 +233,10 @@ ROAS: {valor}
 | Captura de Leads / Lead capture           | ✅     |
 | Geração de insights com IA / AI insights  | ✅     |
 | Integração InfinitePay / InfinitePay CTA  | ✅     |
+| Dashboard com histórico de Roas           | ✅     |
 | Backend seguro / Secured backend          | ✅     |
 | Documentação técnica / Documentation      | ✅     |
+
 
 ---
 

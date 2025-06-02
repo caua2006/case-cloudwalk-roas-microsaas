@@ -6,7 +6,11 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 
-export function Header() {
+interface HeaderProps {
+  onStartCalculation: () => void
+}
+
+export function Header({onStartCalculation}:HeaderProps) {
   const router = useRouter()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
 
@@ -15,6 +19,9 @@ export function Header() {
     setIsLoggedIn(!!token)
   }, [])
 
+  const handleStartCalulate = () => {
+
+  }
   const handleLoginClick = () => {
     if (isLoggedIn) {
       router.push("/dashboard")
@@ -39,21 +46,21 @@ export function Header() {
 
       {/* Header principal */}
       <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between ">
           <Link href="/" className="flex items-center md:gap-2 gap-1">
             <div className="w-8 h-8 bg-gradient-to-br from-purple-600 to-blue-600 rounded-full flex items-center justify-center">
               <Calculator className="w-4 h-4 text-white" />
             </div>
-            <span className="text-xl font-bold text-gray-900">ROASCalc</span>
+            <span className="text-sm font-bold text-gray-900 sm:text-xl">ROASCalc</span>
           </Link>
 
           
 
-          <div className="flex items-center gap-4 ml-1 md:ml-0">
+          <div className="flex items-center gap-2 ml-1 md:ml-0">
             <Button variant="outline" className="md:inline-flex" onClick={handleLoginClick}>
               {isLoggedIn ? "Dashboard" : "Login"}
             </Button>
-            <Button className="bg-lime-400 hover:bg-lime-500 text-black font-semibold" onClick={() => router.push("/")}>
+            <Button className="bg-lime-400 hover:bg-lime-500 text-black font-semibold" onClick={onStartCalculation}>
               Calcular agora
             </Button>
           </div>

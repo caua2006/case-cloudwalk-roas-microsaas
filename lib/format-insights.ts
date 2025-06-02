@@ -10,11 +10,11 @@ export function formatInsights(rawText: string): string {
       // Converte bullet points markdown para bullets visuais
       .replace(/^[-*+]\s+/gm, "• ")
       // Converte numbered lists
-      .replace(/^\d+\.\s+/gm, (match, offset, string) => {
-        const lineStart = string.lastIndexOf("\n", offset) + 1
-        const lineNumber = string.substring(lineStart, offset).match(/^\d+/) || ["1"]
-        return `${lineNumber[0]}. `
-      })
+      // .replace(/^\d+\.\s+/gm, (match, offset, string) => {
+      //   const lineStart = string.lastIndexOf("\n", offset) + 1
+      //   const lineNumber = string.substring(lineStart, offset).match(/^\d+/) || ["1"]
+      //   return `${lineNumber[0]}. `
+      // })
       // Remove code blocks (```)
       .replace(/```[\s\S]*?```/g, "")
       // Remove inline code (`text`)

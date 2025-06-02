@@ -109,12 +109,23 @@ export function ResultDisplay({ roas, insights, valorInvestido, receitaGerada, p
                     R$ {receitaGerada.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
                   </div>
                 </div>
-                <div className="text-center p-4 bg-gradient-to-r from-lime-50 to-green-50 rounded-xl border border-lime-200">
-                  <div className="text-sm font-semibold text-green-700 mb-1">Lucro</div>
-                  <div className="text-xl font-bold text-green-800">
-                    R$ {lucro.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                {lucro > 0 && (
+                  <div className="text-center p-4 bg-gradient-to-r from-lime-50 to-green-50 rounded-xl border border-lime-200">
+                    <div className="text-sm font-semibold text-green-700 mb-1">Lucro</div>
+                    <div className="text-xl font-bold text-green-800">
+                      R$ {lucro.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                    </div>
                   </div>
-                </div>
+                )}
+
+                {lucro < 0 && (
+                  <div className="text-center p-4 bg-gradient-to-r from-red-50 to-red-50 rounded-xl border border-red-200">
+                    <div className="text-sm font-semibold text-red-700 mb-1">Lucro</div>
+                    <div className="text-xl font-bold text-red-800">
+                      R$ {lucro.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="text-center p-4 bg-purple-50 rounded-xl border border-purple-200">
                 <p className="text-purple-800 font-medium">
@@ -181,7 +192,7 @@ export function ResultDisplay({ roas, insights, valorInvestido, receitaGerada, p
             </CardHeader>
             <CardContent>
               <div className="prose prose-sm max-w-none">
-                <div className="whitespace-pre-line text-gray-700 leading-relaxed bg-gray-50 rounded-xl p-6 border border-gray-200">
+                <div className="whitespace-pre-line text-gray-700 leading-relaxed bg-gray-50 rounded-xl p-6 border border-gray-200 text-sm">
                   {insights}
                 </div>
               </div>

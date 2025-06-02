@@ -46,7 +46,7 @@ export function AnalysisTable({ analyses }: AnalysisTableProps) {
               <th className="px-4 py-3">Investimento</th>
               <th className="px-4 py-3">Receita</th>
               <th className="px-4 py-3">ROAS</th>
-              <th className="px-4 py-3">Ações</th>
+              {/* <th className="px-4 py-3">Ações</th> */}
             </tr>
           </thead>
           <tbody>
@@ -80,7 +80,7 @@ export function AnalysisTable({ analyses }: AnalysisTableProps) {
                       {Number(analysis.roas).toFixed(2)}x
                     </span>
                   </td>
-                  <td className="px-4 py-3">
+                  {/* <td className="px-4 py-3">
                     <Button
                       variant="ghost"
                       size="sm"
@@ -89,7 +89,7 @@ export function AnalysisTable({ analyses }: AnalysisTableProps) {
                     >
                       <FileText className="h-4 w-4 mr-1" /> HTML
                     </Button>
-                  </td>
+                  </td> */}
                 </tr>
               ))
             ) : (

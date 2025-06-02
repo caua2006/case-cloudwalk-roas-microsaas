@@ -22,7 +22,7 @@ const LOADING_STEPS: LoadingStep[] = [
     title: "Carregando informações",
     description: "Processando dados...",
     icon: <User className="w-4 h-4" />,
-    duration: 2000, // Mantendo a duração original
+    duration: 4000, // Mantendo a duração original
     color: "text-purple-700",
     bgColor: "bg-purple-600",
     darkBgColor: "bg-purple-800",
@@ -32,7 +32,7 @@ const LOADING_STEPS: LoadingStep[] = [
     title: "Calculando ROAS",
     description: "Analisando métricas...",
     icon: <Calculator className="w-4 h-4" />,
-    duration: 2500, // Mantendo a duração original
+    duration: 4000, // Mantendo a duração original
     color: "text-blue-700",
     bgColor: "bg-blue-600",
     darkBgColor: "bg-blue-800",
@@ -42,7 +42,7 @@ const LOADING_STEPS: LoadingStep[] = [
     title: "Gerando insights",
     description: "Criando recomendações...",
     icon: <Brain className="w-4 h-4" />,
-    duration: 3000, // Mantendo a duração original
+    duration: 4000, // Mantendo a duração original
     color: "text-emerald-700",
     bgColor: "bg-emerald-600",
     darkBgColor: "bg-emerald-800",
@@ -52,7 +52,7 @@ const LOADING_STEPS: LoadingStep[] = [
     title: "Finalizando",
     description: "Preparando relatório...",
     icon: <FileText className="w-4 h-4" />,
-    duration: 2000, // Mantendo a duração original
+    duration: 4000, // Mantendo a duração original
     color: "text-orange-700",
     bgColor: "bg-orange-600",
     darkBgColor: "bg-orange-800",

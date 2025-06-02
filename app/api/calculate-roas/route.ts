@@ -88,9 +88,9 @@ ${dataCampanha ? `- Data da Campanha: ${new Date(dataCampanha).toLocaleDateStrin
 FORNEÇA UMA ANÁLISE COMPLETA E DETALHADA COM:
 
 1. **CLASSIFICAÇÃO DO DESEMPENHO** (Excelente/Bom/Regular/Ruim) com emoji
-2. **ANÁLISE DETALHADA** do resultado obtido (mínimo 3 parágrafos)
+2. **ANÁLISE DETALHADA** do resultado obtido (máximo 1 parágrafos)
 3. **BENCHMARKS DO MERCADO** para comparação específica da plataforma
-4. **5 RECOMENDAÇÕES ESPECÍFICAS** para otimização (numeradas)
+4. **3 RECOMENDAÇÕES ESPECÍFICAS** para otimização (numeradas)
 5. **PRÓXIMOS PASSOS** estratégicos (3 ações concretas)
 6. **ALERTAS E OPORTUNIDADES** baseados no ROAS atual
 
@@ -102,7 +102,7 @@ IMPORTANTE:
 - Responda em português brasileiro
 - Use formatação clara com **negrito** para destacar pontos importantes
 - Seja detalhado e forneça valor real ao usuário
-
+- Sucinto nas suas palavras.
 Análise:
         `
 

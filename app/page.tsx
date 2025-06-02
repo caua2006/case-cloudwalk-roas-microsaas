@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { AlertCircle, RefreshCw, Home } from "lucide-react"
 import type { FormData, LeadData } from "@/types"
+import { InfinitePayBanner } from "@/components/infinite-pay-banner"
 
 type Step = "hero" | "form" | "lead" | "result" | "error"
 
@@ -220,7 +221,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <Header />
+      <Header onStartCalculation={handleStartCalculation}/>
 
       {currentStep === "hero" && <HeroSection onStartCalculation={handleStartCalculation} />}
 

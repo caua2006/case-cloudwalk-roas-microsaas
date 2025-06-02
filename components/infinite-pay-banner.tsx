@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { ArrowRight, Shield, Zap, CreditCard, Smartphone, CheckCircle } from "lucide-react"
+import Image from "next/image"
 
 export function InfinitePayBanner() {
   return (
@@ -26,11 +27,15 @@ export function InfinitePayBanner() {
             <div className="p-6 lg:p-8 text-center">
               {/* Logo e título */}
               <div className="flex items-center justify-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center">
-                  <div className="w-6 h-6 bg-lime-400 rounded-full"></div>
-                </div>
-                <span className="text-3xl font-bold text-black">infinitepay</span>
+                <Image 
+                src="/logo-infinite-pay.svg"
+                 alt="Logo of Infinitepay" 
+                 width={200}
+                 height={40}
+              />
               </div>
+
+              
 
               <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 leading-tight">
                 Potencialize suas vendas com a{" "}

@@ -10,7 +10,8 @@ import { DashboardHeader } from "@/components/dashboard-header"
 import { OverviewStats } from "@/components/overview-stats"
 import { AnalysisTable } from "@/components/analysis-table"
 import { ComparativeChart } from "@/components/comparative-chart"
-import { Download, RefreshCw } from "lucide-react"
+import { Backpack, Download, LogIn, RefreshCw, StepBack } from "lucide-react"
+import Link from "next/link"
 
 export default function DashboardPage() {
   const router = useRouter()
@@ -164,9 +165,11 @@ export default function DashboardPage() {
                 <p className="text-gray-600">Acompanhe o desempenho das suas campanhas</p>
               </div>
               <div className="flex gap-4">
+                <Link href={'/'}>
                 <Button onClick={handleRefresh} variant="outline" size="sm">
-                  <RefreshCw className="mr-2 h-4 w-4" /> Atualizar
+                  <RefreshCw className="mr-2 h-4 w-4" /> Gerar novo cálculo
                 </Button>
+                </Link>
                 <Button onClick={handleGenerateComparativeHTML} size="sm" className="bg-purple-600 hover:bg-purple-700">
                   <Download className="mr-2 h-4 w-4" /> Relatório HTML
                 </Button>
@@ -207,6 +210,14 @@ export default function DashboardPage() {
         ) : (
           <div className="text-center py-12">
             <p className="text-gray-600">Faça login para visualizar seu dashboard</p>
+            <div>
+            <Button onClick={() => window.location.reload()} variant="outline" className="mt-4">
+                <LogIn className="mr-2 h-4 w-4" /> Faça login
+              </Button>
+              <Button onClick={() => router.back()} variant="outline" className="mt-4">
+                <StepBack className="mr-2 h-4 w-4" /> Voltar
+              </Button>
+            </div>
           </div>
         )}
       </main>

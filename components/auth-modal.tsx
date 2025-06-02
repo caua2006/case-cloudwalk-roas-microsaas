@@ -79,6 +79,8 @@ export function AuthModal({ isOpen, onClose, onSuccess }: AuthModalProps) {
         <DialogHeader>
           <DialogTitle>Acesse sua conta</DialogTitle>
           <DialogDescription>Entre ou crie uma conta para acessar seu dashboard pessoal</DialogDescription>
+          <DialogDescription>Use o mesmo email que foi usado para calcular o ROAS para criar a conta</DialogDescription>
+
         </DialogHeader>
 
         <Tabs defaultValue="login" className="w-full">
